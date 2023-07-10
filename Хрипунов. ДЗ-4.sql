@@ -53,10 +53,14 @@ SELECT shopname FROM shops, cats
 WHERE shops.id = cats.shops_id AND cats.name = 'Murzik';
 
 -- Вывести магазины, в которых НЕ продаются коты “Мурзик” и “Zuza”;
+
 SELECT shopname FROM shops
+WHERE shopname NOT IN
+(SELECT shopname FROM shops
 JOIN cats
 ON shops.id = cats.shops_id 
-WHERE cats.name != 'Murzik' AND cats.name != 'Zuza';
+WHERE cats.name = 'Murzik' OR cats.name = 'Zuza');
+
 
 -- Последнее задание, таблица:
 
